@@ -12,7 +12,7 @@ namespace Stock
     public class StockService : Stock.StockBase
     {
         static readonly List<string> sessions = new List<string>();
-        static readonly List<StockItem> Items = new List<StockItem>();
+        //static readonly List<StockItem> Items = new List<StockItem>();
 
         myDBConnection conn = new myDBConnection();
         MySqlCommand command;

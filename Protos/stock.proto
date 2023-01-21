@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+option csharp_namespace = "Stock";
+
+package stock;
+
+// The greeting service definition.
+service Stock {
+ rpc Login(User) returns (Session_Id) {}
+  rpc Logout(Session_Id) returns (Result) {}
+  rpc ItemAdd(NewItem) returns (Result) {}
+  rpc ItemDelete(DeleteStockItem) returns (Result) {}
+  rpc List(Empty) returns (stream StockItem) {}
+  rpc StockItemUpdate(UpdatedStockItem) returns (Result) {}
+}
+message Empty {
+}
+
+message User {
+  string name=1;
+  string passwd=2;
+}
+
+message Session_Id {
+  string id=1;
+}
+
+message Result {
+  string success=1;
+}
+
+message NewItem { //data
+   string name=1;
+   string code=2;
+   int32 price=3;
+   string uid=4;
+}
+
+message StockItem { //product
+   string name=1;
+   string code=2;
+   int32 cur_price=3;
+   string username=4;
+}
+
+message UpdatedStockItem { //product2
+   string code=1;
+   int32 price=2;
+   string uid=3;
+}
+
+message DeleteStockItem {
+   string code=1;
+   string uid=2;
+}
